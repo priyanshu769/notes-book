@@ -7,7 +7,7 @@ export default function App() {
 
   const changeHandler = (x) => {
     if (x.target.name === "heading") {
-      setInput({ ...input, haeding: x.target.value });
+      setInput({ ...input, heading: x.target.value });
     } else if (x.target.name === "note") {
       setInput({ ...input, note: x.target.value });
     } else if (x.target.name === "addNote") {
@@ -31,7 +31,16 @@ export default function App() {
       </div>
       {/* display notes */}
       <div>
-        <ul></ul>
+        <ul>
+          {noteList.map((note) => (
+            <li>
+              <div>
+                <h4>{note.heading}</h4>
+                <p>{note.note}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
