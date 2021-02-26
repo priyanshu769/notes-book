@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./styles.css";
 import uuid from "react-uuid";
 import Colors from "./Colors.js";
+import CreateNote from "./TakeNote.js";
 
 // This was made to check the delete feature.
 // const notes = [
@@ -102,34 +103,10 @@ export default function App() {
       <h1>Notes' Book</h1>
       <h2>Note down all stuffs at one place.</h2>
       <div style={{ backgroundColor: noteColor }} className="createNote">
-        <input
-          className="input title"
-          placeholder="Title"
-          // value={empty}
-          onChange={changeHandler}
-          name="heading"
-        />
-        <br />
-        <textarea
-          className="input takeNote"
-          placeholder="Take a Note"
-          // value={empty}
-          onChange={changeHandler}
-          name="note"
-        />
-        <br />
-        <button className="btn" onClick={changeHandler} name="addNote">
-          Add
-        </button>
-        <button className="btn" onClick={changeHandler} name="color">
-          Color
-        </button>
-        <button className="btn" onClick={changeHandler} name="pinNote">
-          Pin
-        </button>
+        <CreateNote noteBG={noteColor} function={changeHandler} />
         <Colors
           function={colorHandle}
-          style={colorComp ? { display: "none" } : { display: "" }}
+          style={colorComp ? { display: "" } : { display: "none" }}
         />
       </div>
       {/* display notes */}
