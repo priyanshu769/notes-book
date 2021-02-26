@@ -4,31 +4,47 @@ import uuid from "react-uuid";
 
 // This was made to check the delete feature.
 // const notes = [
-//   {
-//     id: "1",
-//     heading: "Buy Vegies",
-//     note: "Tomato, Potato, Onion, Spinach"
-//   },
-//   {
-//     id: "2",
-//     heading: "Buy Protien",
-//     note: "Paneer, Meet, Eggs"
-//   },
-//   {
-//     id: "3",
-//     heading: "Buy Clothes",
-//     note: "Jacket, Jeans, Shirt, T-Shirt"
-//   }
+// {
+//   id: "1",
+//   heading: "Buy Vegies",
+//   note: "Tomato, Potato, Onion, Spinach"
+// },
+// {
+//   id: "2",
+//   heading: "Buy Protien",
+//   note: "Paneer, Meet, Eggs"
+// },
+// {
+//   id: "3",
+//   heading: "Buy Clothes",
+//   note: "Jacket, Jeans, Shirt, T-Shirt"
+// }
 // ];
 
 export default function App() {
   // const [empty, setEmpty] = useState("");
   const [input, setInput] = useState({});
-  const [noteList, setNoteList] = useState([]);
+  const [noteList, setNoteList] = useState([
+    // {
+    //   id: "1",
+    //   heading: "Buy Vegies",
+    //   note: "Tomato, Potato, Onion, Spinach"
+    // },
+    // {
+    //   id: "2",
+    //   heading: "Buy Protien",
+    //   note: "Paneer, Meet, Eggs"
+    // },
+    // {
+    //   id: "3",
+    //   heading: "Buy Clothes",
+    //   note: "Jacket, Jeans, Shirt, T-Shirt"
+    // }
+  ]);
 
   const changeHandler = (x) => {
     if (x.target.name === "heading") {
-      setInput({ ...input, heading: x.target.value, id: "1" });
+      setInput({ ...input, heading: x.target.value, id: uuid() });
     } else if (x.target.name === "note") {
       setInput({ ...input, note: x.target.value });
     } else if (x.target.name === "addNote") {
@@ -37,13 +53,13 @@ export default function App() {
     }
   };
   // console.log(input);
-  // console.log(noteList);
+  console.log(noteList);
   const deleteNote = (x) => {
-    notes.map((delNote) => {
+    noteList.map((delNote) => {
       if (x.target.id == delNote.id) {
-        // console.log(delNote);
-        // console.log(noteList.indexOf(delNote));
-        // console.log(noteList.splice(noteList.indexOf(delNote), 1));
+        console.log(delNote);
+        console.log(noteList.indexOf(delNote));
+        console.log(noteList.splice(noteList.indexOf(delNote), 1));
         // notes.splice(notes.indexOf(delNote), 1);
         setNoteList([
           ...noteList,
@@ -61,35 +77,44 @@ export default function App() {
     <div className="App">
       <h1>Notes' Book</h1>
       <h2>Note down all stuffs at one place.</h2>
-      <div>
+      <div className="createNote">
         <input
+          className="input title"
           placeholder="Title"
           // value={empty}
           onChange={changeHandler}
           name="heading"
         />
         <br />
-        <input
-          placeholder="Note"
+        <textarea
+          className="input takeNote"
+          placeholder="Take a Note"
           // value={empty}
           onChange={changeHandler}
           name="note"
         />
         <br />
-        <button onClick={changeHandler} name="addNote">
-          Add Note
+        <button className="btn" onClick={changeHandler} name="addNote">
+          Add
+        </button>
+        <button className="btn" onClick={changeHandler} name="addNote">
+          Color
+        </button>
+        <button className="btn" onClick={changeHandler} name="addNote">
+          Pin
         </button>
       </div>
       {/* display notes */}
       <div>
-        <ul>
+        <ul className="otherNotes">
           {noteList.map((note) => (
             <li>
-              <div>
+              <div className="theNote">
                 <h4>{note.heading}</h4>
                 <p>{note.note}</p>
-                <button id={note.id} onClick={deleteNote}>
-                  Del
+                <hr />
+                <button className="btn" id={note.id} onClick={deleteNote}>
+                  Delete
                 </button>
               </div>
             </li>

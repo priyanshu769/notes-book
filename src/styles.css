@@ -2,3 +2,33 @@
   font-family: sans-serif;
   text-align: center;
 }
+.createNote {
+  border: 1px solid #000000;
+  width: fit-content;
+  margin: auto;
+  padding: 1rem;
+}
+.input {
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+}
+.takeNote {
+  width: 10rem;
+  height: 10rem;
+}
+.btn {
+  width: 4rem;
+  padding: 0.3rem;
+  margin: 1px;
+}
+.otherNotes {
+  list-style: none;
+}
+.listItemInline {
+  display: inline;
+  padding: 0rem 0.5rem;
+}
+.theNote {
+  border: 1px solid #000000;
+  width: 13rem;
+}
