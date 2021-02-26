@@ -47,7 +47,12 @@ export default function App() {
 
   const changeHandler = (x) => {
     if (x.target.name === "heading") {
-      setInput({ ...input, heading: x.target.value, id: uuid() });
+      setInput({
+        ...input,
+        heading: x.target.value,
+        noteBg: noteColor,
+        id: uuid()
+      });
     } else if (x.target.name === "note") {
       setInput({ ...input, note: x.target.value });
     } else if (x.target.name === "addNote") {
@@ -59,7 +64,7 @@ export default function App() {
     }
   };
   // console.log(input);
-  // console.log(noteList);s
+  console.log(noteList);
   const deleteNote = (x) => {
     noteList.map((delNote) => {
       if (x.target.id == delNote.id) {
@@ -132,7 +137,7 @@ export default function App() {
         <ul className="otherNotes">
           {noteList.map((note) => (
             <li>
-              <div className="theNote">
+              <div style={{ backgroundColor: note.noteBg }} className="theNote">
                 <h4>{note.heading}</h4>
                 <p>{note.note}</p>
                 <hr />
