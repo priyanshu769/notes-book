@@ -5,13 +5,13 @@ export default function Colors(props) {
     <div style={props.style} className="Colors">
       <button
         onClick={props.function}
-        name="green"
-        className="colorBtn green"
+        name="red"
+        className="colorBtn red"
       ></button>
       <button
         onClick={props.function}
-        name="yellow"
-        className="colorBtn yellow"
+        name="green"
+        className="colorBtn green"
       ></button>
       <button
         onClick={props.function}
@@ -20,8 +20,8 @@ export default function Colors(props) {
       ></button>
       <button
         onClick={props.function}
-        name="red"
-        className="colorBtn red"
+        name="yellow"
+        className="colorBtn yellow"
       ></button>
     </div>
   );

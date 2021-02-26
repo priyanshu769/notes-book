@@ -33,22 +33,26 @@
   width: 13rem;
 }
 /* Color Button */
+.Colors {
+  background-color: #000000;
+}
 .colorBtn {
   cursor: pointer;
   padding: 1rem;
   border-radius: 100%;
   border: none;
   margin: 5px 2px;
-}
-.yellow {
-  background-color: #f9ed69;
-}
-.green {
-  background-color: #00b8a9;
+  outline: none;
 }
 .red {
   background-color: #e84545;
 }
+.green {
+  background-color: #00b8a9;
+}
 .blue {
   background-color: #3490de;
+}
+.yellow {
+  background-color: #f9ed69;
 }

@@ -24,6 +24,7 @@ import Colors from "./Colors.js";
 
 export default function App() {
   // const [empty, setEmpty] = useState("");
+  const [noteColor, setNoteColor] = useState("#ffffff");
   const [colorComp, setColorComp] = useState(false);
   const [input, setInput] = useState({});
   const [noteList, setNoteList] = useState([
@@ -77,12 +78,25 @@ export default function App() {
       }
     });
   };
-
+  const colorHandle = (c) => {
+    if (c.target.name === "red") {
+      setNoteColor("#e84545");
+    } else if (c.target.name === "green") {
+      setNoteColor("#00b8a9");
+    } else if (c.target.name === "blue") {
+      setNoteColor("#3490de");
+    } else if (c.target.name === "yellow") {
+      setNoteColor("#f9ed69");
+    }
+    console.log(c.target.name);
+    console.log(noteColor);
+  };
+  console.log(noteColor);
   return (
     <div className="App">
       <h1>Notes' Book</h1>
       <h2>Note down all stuffs at one place.</h2>
-      <div className="createNote">
+      <div style={{ backgroundColor: noteColor }} className="createNote">
         <input
           className="input title"
           placeholder="Title"
@@ -108,7 +122,10 @@ export default function App() {
         <button className="btn" onClick={changeHandler} name="pinNote">
           Pin
         </button>
-        <Colors style={colorComp ? { display: "none" } : { display: "" }} />
+        <Colors
+          function={colorHandle}
+          style={colorComp ? { display: "none" } : { display: "" }}
+        />
       </div>
       {/* display notes */}
       <div>
