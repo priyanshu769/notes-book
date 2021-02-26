@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./styles.css";
 import uuid from "react-uuid";
+import Colors from "./Colors.js";
 
 // This was made to check the delete feature.
 // const notes = [
@@ -23,6 +24,7 @@ import uuid from "react-uuid";
 
 export default function App() {
   // const [empty, setEmpty] = useState("");
+  const [colorComp, setColorComp] = useState(false);
   const [input, setInput] = useState({});
   const [noteList, setNoteList] = useState([
     // {
@@ -50,10 +52,13 @@ export default function App() {
     } else if (x.target.name === "addNote") {
       setNoteList([...noteList, input]);
       setInput({});
+    } else if (x.target.name === "color") {
+      setColorComp(!colorComp);
+      console.log(colorComp);
     }
   };
   // console.log(input);
-  console.log(noteList);
+  // console.log(noteList);s
   const deleteNote = (x) => {
     noteList.map((delNote) => {
       if (x.target.id == delNote.id) {
@@ -97,12 +102,13 @@ export default function App() {
         <button className="btn" onClick={changeHandler} name="addNote">
           Add
         </button>
-        <button className="btn" onClick={changeHandler} name="addNote">
+        <button className="btn" onClick={changeHandler} name="color">
           Color
         </button>
-        <button className="btn" onClick={changeHandler} name="addNote">
+        <button className="btn" onClick={changeHandler} name="pinNote">
           Pin
         </button>
+        <Colors style={colorComp ? { display: "none" } : { display: "" }} />
       </div>
       {/* display notes */}
       <div>

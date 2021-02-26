@@ -32,3 +32,23 @@
   border: 1px solid #000000;
   width: 13rem;
 }
+/* Color Button */
+.colorBtn {
+  cursor: pointer;
+  padding: 1rem;
+  border-radius: 100%;
+  border: none;
+  margin: 5px 2px;
+}
+.yellow {
+  background-color: #f9ed69;
+}
+.green {
+  background-color: #00b8a9;
+}
+.red {
+  background-color: #e84545;
+}
+.blue {
+  background-color: #3490de;
+}
