@@ -1,6 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap");
 .App {
-  font-family: sans-serif;
+  font-family: Rubik, sans-serif;
   text-align: center;
+}
+.dark {
+  color: #ffffff;
+  background-color: #000000;
+}
+.DarkMode {
+  text-align: right;
+  margin-right: 5rem;
+}
+.darkModeBtn {
+  background-color: #2b2e4a;
+  border: 3px solid #52616b;
+  outline: none;
 }
 .createNote {
   border: 1px solid #000000;
@@ -36,17 +50,21 @@
   background-color: #000000;
   color: white;
   border-radius: 10%;
+  cursor: pointer;
 }
-.otherNotes {
-  list-style: none;
-}
-.listItemInline {
-  display: inline;
-  padding: 0rem 0.5rem;
-}
+
 .theNote {
+  padding: 1rem 0.7rem;
   border: 1px solid #000000;
   width: 13rem;
+  color: #000000;
+  text-align: left;
+  margin: 1rem;
+}
+.context {
+  color: #c9d6df;
+  padding: 0;
+  margin: 0;
 }
 /* Color Button */
 .Colors {

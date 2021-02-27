@@ -3,6 +3,7 @@ import "./styles.css";
 import uuid from "react-uuid";
 import Colors from "./Colors.js";
 import CreateNote from "./TakeNote.js";
+import DarkMode from "./DarkMode.js";
 
 // This was made to check the delete feature.
 // const notes = [
@@ -25,6 +26,7 @@ import CreateNote from "./TakeNote.js";
 
 export default function App() {
   // const [empty, setEmpty] = useState("");
+  const [dark, setDark] = useState("App");
   const [noteColor, setNoteColor] = useState("#ffffff");
   const [colorComp, setColorComp] = useState(false);
   const [input, setInput] = useState({});
@@ -62,6 +64,12 @@ export default function App() {
     } else if (x.target.name === "color") {
       setColorComp(!colorComp);
       console.log(colorComp);
+    } else if (x.target.name === "darkBtn") {
+      if (dark === "App") {
+        setDark("App dark");
+      } else if (dark === "App dark") {
+        setDark("App");
+      }
     }
   };
   // console.log(input);
@@ -99,9 +107,10 @@ export default function App() {
   };
   console.log(noteColor);
   return (
-    <div className="App">
+    <div className={dark}>
       <h1>Notes' Book</h1>
       <h2>Note down all stuffs at one place.</h2>
+      <DarkMode function={changeHandler} />
       <div style={{ backgroundColor: noteColor }} className="createNote">
         <CreateNote noteBG={noteColor} function={changeHandler} />
         <Colors
@@ -110,21 +119,19 @@ export default function App() {
         />
       </div>
       {/* display notes */}
-      <div>
-        <ul className="otherNotes">
-          {noteList.map((note) => (
-            <li>
-              <div style={{ backgroundColor: note.noteBg }} className="theNote">
-                <h4>{note.heading}</h4>
-                <p>{note.note}</p>
-                <hr />
-                <button className="btn" id={note.id} onClick={deleteNote}>
-                  Delete
-                </button>
-              </div>
-            </li>
-          ))}
-        </ul>
+      <div className="notesDisplay">
+        {noteList.map((note) => (
+          <div style={{ backgroundColor: note.noteBg }} className="theNote">
+            <small className="context">Title</small>
+            <h4>{note.heading}</h4>
+            <small className="context">Note</small>
+            <p>{note.note}</p>
+            <hr />
+            <button className="btn" id={note.id} onClick={deleteNote}>
+              Delete
+            </button>
+          </div>
+        ))}
       </div>
     </div>
   );
