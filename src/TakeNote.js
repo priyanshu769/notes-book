@@ -19,15 +19,17 @@ export default function CreateNote(props) {
         name="note"
       />
       <br />
-      <button className="btn" onClick={props.function} name="addNote">
-        Add
-      </button>
-      <button className="btn" onClick={props.function} name="color">
-        Color
-      </button>
-      <button className="btn" onClick={props.function} name="pinNote">
-        Pin
-      </button>
+      <div className="btnArea">
+        <button className="btn" onClick={props.function} name="addNote">
+          Add
+        </button>
+        <button className="btn" onClick={props.function} name="color">
+          Color
+        </button>
+        <button className="btn" onClick={props.function} name="pinNote">
+          Pin
+        </button>
+      </div>
     </div>
   );
 }
