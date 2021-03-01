@@ -26,6 +26,7 @@ import DarkMode from "./DarkMode.js";
 
 export default function App() {
   // const [empty, setEmpty] = useState("");
+  const [pin, setPin] = useState(false);
   const [dark, setDark] = useState("App");
   const [noteColor, setNoteColor] = useState("#ffffff");
   const [colorComp, setColorComp] = useState(false);
@@ -54,7 +55,8 @@ export default function App() {
         ...input,
         heading: x.target.value,
         noteBg: noteColor,
-        id: uuid()
+        id: uuid(),
+        pinned: pin
       });
     } else if (x.target.name === "note") {
       setInput({ ...input, note: x.target.value });
@@ -70,6 +72,8 @@ export default function App() {
       } else if (dark === "App dark") {
         setDark("App");
       }
+    } else if (x.target.name === "pinNote") {
+      setPin(!pin);
     }
   };
   // console.log(input);
