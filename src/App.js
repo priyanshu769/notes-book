@@ -80,22 +80,20 @@ export default function App() {
   // console.log(input);
   console.log(noteList);
   const deleteNote = (x) => {
-    noteList.map((delNote) => {
-      if (x.target.id == delNote.id) {
-        console.log(delNote);
-        console.log(noteList.indexOf(delNote));
-        console.log(noteList.splice(noteList.indexOf(delNote), 1));
-        // notes.splice(notes.indexOf(delNote), 1);
-        setNoteList([
-          ...noteList,
-          noteList.splice(noteList.indexOf(delNote), 1)
-        ]);
-        // console.log(notes);
-      } else {
-        setNoteList([...noteList]);
-        // console.log(notes);
-      }
-    });
+    const findNote = noteList.find((note) => note.id === x.target.id);
+    if (findNote) {
+      console.log("ID Matched");
+      const noteToBeDel = noteList.find((note) => {
+        if (note.id === x.target.id) {
+          return note;
+        }
+      });
+      setNoteList([
+        ...noteList,
+        noteList.splice(noteList.indexOf(noteToBeDel), 1)
+      ]);
+    }
+    setNoteList([...noteList]);
   };
   const colorHandle = (c) => {
     if (c.target.name === "red") {
