@@ -4,6 +4,7 @@ import uuid from "react-uuid";
 import Colors from "./Colors.js";
 import CreateNote from "./TakeNote.js";
 import DarkMode from "./DarkMode.js";
+import TheNote from "./TheNote.js";
 
 // This was made to check the delete feature.
 // const notes = [
@@ -125,16 +126,13 @@ export default function App() {
       {/* display notes */}
       <div className="notesDisplay">
         {noteList.map((note) => (
-          <div style={{ backgroundColor: note.noteBg }} className="theNote">
-            <small className="context">Title</small>
-            <h4>{note.heading}</h4>
-            <small className="context">Note</small>
-            <p>{note.note}</p>
-            <hr />
-            <button className="btn" id={note.id} onClick={deleteNote}>
-              Delete
-            </button>
-          </div>
+          <TheNote
+            noteBg={note.noteBg}
+            heading={note.heading}
+            note={note.note}
+            id={note.id}
+            function={deleteNote}
+          />
         ))}
       </div>
     </div>

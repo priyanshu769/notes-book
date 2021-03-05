@@ -13,3 +13,4 @@ Refactor: Separated the take note area to another JS page.
 Style: Changed appearance of take note area.
 Feat & Style: Added Dark Mode and change notes display
 Feat: Added the function to pin button (pushes pin element to obj)
+Refactor: Separated the note area to another JS page as a component.
