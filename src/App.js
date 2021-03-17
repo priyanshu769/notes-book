@@ -26,12 +26,12 @@ import TheNote from "./TheNote.js";
 // ];
 
 export default function App() {
-  // const [empty, setEmpty] = useState("");
+  const [title, setTitle] = useState("");
+  const [note, setNote] = useState("");
   const [pin, setPin] = useState(false);
   const [dark, setDark] = useState("App");
   const [noteColor, setNoteColor] = useState("#ffffff");
   const [colorComp, setColorComp] = useState(false);
-  const [input, setInput] = useState({});
   const [noteList, setNoteList] = useState([
     // {
     //   id: "1",
@@ -52,18 +52,16 @@ export default function App() {
 
   const changeHandler = (x) => {
     if (x.target.name === "heading") {
-      setInput({
-        ...input,
-        heading: x.target.value,
-        noteBg: noteColor,
-        id: uuid(),
-        pinned: pin
-      });
+      setTitle(x.target.value);
     } else if (x.target.name === "note") {
-      setInput({ ...input, note: x.target.value });
+      setNote(x.target.value);
     } else if (x.target.name === "addNote") {
-      setNoteList([...noteList, input]);
-      setInput({});
+      setNoteList([
+        ...noteList,
+        { title: title, note: note, noteBg: noteColor, id: uuid(), pinned: pin }
+      ]);
+      setTitle("");
+      setNote("");
     } else if (x.target.name === "color") {
       setColorComp(!colorComp);
       console.log(colorComp);
@@ -77,7 +75,6 @@ export default function App() {
       setPin(!pin);
     }
   };
-  // console.log(input);
   console.log(noteList);
   const deleteNote = (x) => {
     const findNote = noteList.find((note) => note.id === x.target.id);
@@ -109,27 +106,50 @@ export default function App() {
     console.log(noteColor);
   };
   console.log(noteColor);
+  const unPinnedNotes = noteList.filter((note) => note.pinned === false);
+  const pinnedNotes = noteList.filter((note) => note.pinned === true);
   return (
     <div className={dark}>
       <h1>Notes' Book</h1>
       <h2>Note down all stuffs at one place.</h2>
       <DarkMode function={changeHandler} />
       <div style={{ backgroundColor: noteColor }} className="createNote">
-        <CreateNote noteBG={noteColor} function={changeHandler} />
+        <CreateNote
+          valueTitle={title}
+          valueNote={note}
+          noteBG={noteColor}
+          function={changeHandler}
+          classNames={pin ? "btn pinned" : "btn"}
+        />
         <Colors
           function={colorHandle}
           style={colorComp ? { display: "" } : { display: "none" }}
         />
       </div>
       {/* display notes */}
-      <div className="notesDisplay">
-        {noteList.map((note) => (
+      <h2>Pinned</h2>
+      <div clasName="pinnedNotes">
+        {pinnedNotes.map((note) => (
           <TheNote
             noteBg={note.noteBg}
-            heading={note.heading}
+            heading={note.title}
             note={note.note}
             id={note.id}
             function={deleteNote}
+            functionColor={changeHandler}
+          />
+        ))}
+      </div>
+      <h2>Unpinned Notes</h2>
+      <div className="notesDisplay unPinnedNotes">
+        {unPinnedNotes.map((note) => (
+          <TheNote
+            noteBg={note.noteBg}
+            heading={note.title}
+            note={note.note}
+            id={note.id}
+            function={deleteNote}
+            functionColor={changeHandler}
           />
         ))}
       </div>

@@ -6,7 +6,7 @@ export default function CreateNote(props) {
       <input
         className="input title"
         placeholder="Title"
-        // value={empty}
+        value={props.valueTitle}
         onChange={props.function}
         name="heading"
       />
@@ -14,7 +14,7 @@ export default function CreateNote(props) {
       <textarea
         className="input takeNote"
         placeholder="Take a Note"
-        // value={empty}
+        value={props.valueNote}
         onChange={props.function}
         name="note"
       />
@@ -26,7 +26,11 @@ export default function CreateNote(props) {
         <button className="btn" onClick={props.function} name="color">
           Color
         </button>
-        <button className="btn" onClick={props.function} name="pinNote">
+        <button
+          className={props.classNames}
+          onClick={props.function}
+          name="pinNote"
+        >
           Pin
         </button>
       </div>
